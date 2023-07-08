@@ -6,6 +6,7 @@ import java.util.stream.IntStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.minhhoangtran.springrestapi.exception.NoContactException;
 import com.minhhoangtran.springrestapi.pojo.Contact;
 import com.minhhoangtran.springrestapi.repository.ContactRepository;
 
@@ -41,11 +42,11 @@ public class ContactServiceImpl implements ContactService {
         contactRepository.deleteContact(findIndexById(id));
     }
 
-    private int findIndexById(String id) {
+    private int findIndexById(String id) throws NoContactException {
         return IntStream.range(0, contactRepository.getContacts().size())
                 .filter(index -> contactRepository.getContacts().get(index).getId().equals(id))
                 .findFirst()
-                .orElseThrow();
+                .orElseThrow(() -> new NoContactException(id));
     }
 
 }
