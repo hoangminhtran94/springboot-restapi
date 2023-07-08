@@ -1,12 +1,12 @@
-package service;
+package com.minhhoangtran.springrestapi.service;
 
 import java.util.stream.IntStream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import pojo.Contact;
-import repository.ContactRepository;
+import com.minhhoangtran.springrestapi.pojo.Contact;
+import com.minhhoangtran.springrestapi.repository.ContactRepository;
 
 @Service
 public class ContactServiceImpl implements ContactService {
@@ -24,5 +24,10 @@ public class ContactServiceImpl implements ContactService {
                 .filter(index -> contactRepository.getContacts().get(index).getId().equals(id))
                 .findFirst()
                 .orElseThrow();
+    }
+
+    @Override
+    public void saveContact(Contact contact) {
+        contactRepository.saveContact(contact);
     }
 }

@@ -1,14 +1,16 @@
-package controller;
+package com.minhhoangtran.springrestapi.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import pojo.Contact;
-import service.ContactService;
+import com.minhhoangtran.springrestapi.pojo.Contact;
+import com.minhhoangtran.springrestapi.service.ContactService;
 
 @RestController
 public class ContactController {
@@ -21,6 +23,12 @@ public class ContactController {
         Contact contact = contactService.getContactById(id);
         return new ResponseEntity<Contact>(contact, HttpStatus.OK);
 
+    }
+
+    @PostMapping("/contact")
+    public ResponseEntity<HttpStatus> createContact(@RequestBody Contact contact) {
+        contactService.saveContact(contact);
+        return new ResponseEntity<HttpStatus>(HttpStatus.CREATED);
     }
 
 }

@@ -1,11 +1,11 @@
-package repository;
+package com.minhhoangtran.springrestapi.repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import pojo.Contact;
+import com.minhhoangtran.springrestapi.pojo.Contact;
 
 @Repository
 public class ContactRepositoryImpl implements ContactRepository {

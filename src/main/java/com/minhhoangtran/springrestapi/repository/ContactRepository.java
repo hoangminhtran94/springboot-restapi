@@ -1,8 +1,8 @@
-package repository;
+package com.minhhoangtran.springrestapi.repository;
 
 import java.util.List;
 
-import pojo.Contact;
+import com.minhhoangtran.springrestapi.pojo.Contact;
 
 public interface ContactRepository {
     List<Contact> getContacts();
