@@ -30,11 +30,11 @@ public class ApplicationExceptionHandler extends ResponseEntityExceptionHandler 
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
             HttpHeaders headers, HttpStatusCode status, WebRequest request) {
-            List<String> errors = new ArrayList<>();
-        for(ObjectError error:ex.getBindingResult().getAllErrors()) {
+        List<String> errors = new ArrayList<>();
+        for (ObjectError error : ex.getBindingResult().getAllErrors()) {
             errors.add(error.getDefaultMessage());
         }
-        return new ResponseEntity<Object>(new ErrorResponse(errors),HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<Object>(new ErrorResponse(errors), HttpStatus.BAD_REQUEST);
     }
 
 }
